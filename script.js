@@ -28,6 +28,7 @@ function getColor() {
 
 function tweetQuote() {
 	var quoteContent = text.textContent;
-	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent;
+	var authorContent = author.textContent;
+	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent + " -" + authorContent;
 	window.open(twitterURL);
 }

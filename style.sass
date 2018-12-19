@@ -43,8 +43,14 @@ h1, h2, h3
 	display: flex
 
 .share
+	position: relative
 	color: $charcoal
 	margin-right: 20px
 	&:hover
 		color: black
 		cursor: pointer
+		visibility: visible
+	.tooltip
+		position: absolute
+		visibility: hidden
+		background-color: black
