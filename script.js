@@ -25,3 +25,9 @@ function getColor() {
 	var newColor = colors[colorNumber];
 	author.style.backgroundColor = newColor;
 }
+
+function tweetQuote() {
+	var quoteContent = text.textContent;
+	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent;
+	window.open(twitterURL);
+}
