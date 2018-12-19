@@ -1,6 +1,6 @@
 # QuoteMachine
 
-##To Do
+## To Do
 <ul>
   <li>Filter out long quotes</li>
   <li>Make responsive to mobile</li>
