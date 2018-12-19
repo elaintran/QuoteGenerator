@@ -32,3 +32,7 @@ function tweetQuote() {
 	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent + " -" + authorContent;
 	window.open(twitterURL);
 }
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});

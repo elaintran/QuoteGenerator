@@ -44,11 +44,10 @@ h1, h2, h3 {
   margin-right: 20px; }
   .share:hover {
     color: black;
-    cursor: pointer;
-    visibility: visible; }
-  .share .tooltip {
-    position: absolute;
-    visibility: hidden;
-    background-color: black; }
+    cursor: pointer; }
+
+.tooltip-inner {
+  white-space: nowrap;
+  padding: 5px 10px; }
 
 /*# sourceMappingURL=style.css.map */
