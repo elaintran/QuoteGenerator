@@ -24,13 +24,20 @@ h1, h2, h3 {
   background-color: #ffc95e;
   color: white;
   letter-spacing: 1px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-family: "Open Sans", sans-serif;
   line-height: 45px; }
 
-#new-quote {
-  float: right; }
-  #new-quote:hover {
-    cursor: pointer; }
+#new-quote:hover {
+  cursor: pointer; }
+
+.options {
+  display: flex;
+  justify-content: space-between; }
+  .options a {
+    color: #4a4a4a;
+    margin-right: 20px; }
+    .options a:hover {
+      color: black; }
 
 /*# sourceMappingURL=style.css.map */
