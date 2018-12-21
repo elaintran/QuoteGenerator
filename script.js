@@ -4,23 +4,57 @@ var next = document.querySelector("#new-quote");
 var quoteContainer = document.querySelector("#quote-box");
 var bookmark = document.querySelector("#bookmark");
 
+var authorQuote;
+var textQuote;
+
 function getQuotes() {
 	var quoteAPI = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?";
 	$.getJSON(quoteAPI, function(data) {
 		console.log(data);
-		author.textContent = data["0"].title;
-		text.innerHTML = data["0"].content;
+		if (data["0"].content.length >= 260) {
+			getQuotes();
+			authorQuote = data["0"].title;
+			textQuote = data["0"].content;
+			//author.textContent = data["0"].title;
+			//text.innerHTML = data["0"].content;
+		} else if (data["0"].content.length < 260) {
+			//author.textContent = data["0"].title;
+			//text.innerHTML = data["0"].content;
+			authorQuote = data["0"].title;
+			textQuote = data["0"].content;
+		}
+		if (author.textContent === "") {
+			author.textContent = data["0"].title;;
+			text.innerHTML = data["0"].content;
+		}
 	})
 }
 
-function nextQuote() {
+function returnQuote() {
 	getQuotes();
-	getColor();
-	quoteContainer.style.transition = "opacity 2s";
-	quoteContainer.style.opacity = 1;
+	return authorQuote;
+	return textQuote;
 }
+returnQuote();
 
-getQuotes();
+/*function initialQuote() {
+	getQuotes();
+	author.textContent = authorQuote;
+	text.innerHTML = textQuote;
+}
+initialQuote();*/
+
+function nextQuote() {
+	$(".quote-container").animate({ opacity: 0 }, 500, function() {
+	    $(this).animate({ opacity: 1}, 500);
+	    getColor();
+	    getQuotes();
+	    author.textContent = authorQuote;
+	    text.innerHTML = textQuote;
+    }
+  );
+}
+//nextQuote();
 
 var colors = ["#5ec0bc", "#ffc95e", "#f36d6a", "#5ab7ed", "#b783c9", "#7ccd83"];
 
