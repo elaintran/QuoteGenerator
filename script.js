@@ -44,18 +44,21 @@ function getColor() {
 	author.style.backgroundColor = newColor;
 }
 
+var quoteContent = text.textContent;
+var authorContent = author.textContent;
+
 function tweetQuote() {
-	var quoteContent = text.textContent;
-	var authorContent = author.textContent;
 	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent + " -" + authorContent;
 	window.open(twitterURL);
 }
 
 function shareFB() {
 	FB.ui({
-	    method: 'share',
+	    method: 'feed',
 	    display: 'popup',
-	    href: 'https://elaintran.github.io/QuoteGenerator/',
+	    link: 'https://elaintran.github.io/QuoteGenerator/',
+	    name: 'Quote Generator',
+	    description: quoteContent + " -" + authorContent,
 	},
   	// callback
   	function(response) {
