@@ -58,6 +58,7 @@ function shareFB() {
             'og:url': 'https://elaintran.github.io/QuoteGenerator/',
             'og:title': 'Quote Generator',
             'og:description': text.textContent + " -" + author.textContent,
+            'og:image': 'https://elaintran.github.io/images/quote-machine.png',
             }
         })
 	},
