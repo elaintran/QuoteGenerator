@@ -51,11 +51,16 @@ function tweetQuote() {
 
 function shareFB() {
 	FB.ui({
-	    method: 'feed',
-	    display: 'popup',
-	    name: 'Quote Generator',
-	    link: 'https://elaintran.github.io/QuoteGenerator/',
-	    description: text.textContent + " -" + author.textContent,
+		method: 'share_open_graph',
+        action_type: 'og.shares',
+        action_properties: JSON.stringify({
+        object: {
+            'og:url': 'https://elaintran.github.io/QuoteGenerator/',
+            'og:title': 'Quote Generator',
+            'og:description': 'text.textContent + " -" + author.textContent',
+            'og:image': '',
+            }
+        })
 	},
   	// callback
   	function(response) {
