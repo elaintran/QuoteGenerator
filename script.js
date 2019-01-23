@@ -44,11 +44,8 @@ function getColor() {
 	author.style.backgroundColor = newColor;
 }
 
-var quoteContent = text.textContent;
-var authorContent = author.textContent;
-
 function tweetQuote() {
-	var twitterURL = "https://twitter.com/intent/tweet?text=" + quoteContent + " -" + authorContent;
+	var twitterURL = "https://twitter.com/intent/tweet?text=" + text.textContent + " -" + author.textContent;
 	window.open(twitterURL);
 }
 
@@ -56,9 +53,9 @@ function shareFB() {
 	FB.ui({
 	    method: 'feed',
 	    display: 'popup',
-	    link: 'https://elaintran.github.io/QuoteGenerator/',
 	    name: 'Quote Generator',
-	    description: quoteContent + " -" + authorContent,
+	    link: 'https://elaintran.github.io/QuoteGenerator/',
+	    description: text.textContent + " -" + author.textContent,
 	},
   	// callback
   	function(response) {
@@ -69,8 +66,6 @@ function shareFB() {
 	    }
 	})
 }
-
-
 
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip(); 
