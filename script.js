@@ -57,7 +57,7 @@ function shareFB() {
         object: {
             'og:url': 'https://elaintran.github.io/QuoteGenerator/',
             'og:title': 'Quote Generator',
-            'og:description': 'text.textContent + " -" + author.textContent',
+            'og:description': text.textContent + " -" + author.textContent,
             'og:image': '',
             }
         })
