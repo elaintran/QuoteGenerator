@@ -3,6 +3,7 @@ var author = document.querySelector("#author");
 var next = document.querySelector("#new-quote");
 var quoteContainer = document.querySelector("#quote-box");
 var bookmark = document.querySelector("#bookmark");
+var quoteBox = document.querySelector("#quote-box");
 
 var authorText;
 var quoteText;
@@ -28,13 +29,6 @@ function nextQuote() {
     }
   );
 }
-//nextQuote();
-
-/*$(document).ready(function() {
-	getQuotes().then(() => {
-    	nextQuote();
-  });
-})*/
 
 var colors = ["#5ec0bc", "#ffc95e", "#f36d6a", "#5ab7ed", "#b783c9", "#7ccd83"];
 
@@ -43,6 +37,10 @@ function getColor() {
 	var newColor = colors[colorNumber];
 	author.style.backgroundColor = newColor;
 }
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
 
 function tweetQuote() {
 	var twitterURL = "https://twitter.com/intent/tweet?text=" + text.textContent + " -" + author.textContent;
@@ -72,10 +70,6 @@ function shareFB() {
 	})
 }
 
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip(); 
-});
-
 function bookmarkPage() {
     var bookmarkURL = window.location.href;
     var bookmarkTitle = document.title;
@@ -103,4 +97,8 @@ function bookmarkPage() {
     }
 
     return false;
+}
+
+function isOverflown(element){
+  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }

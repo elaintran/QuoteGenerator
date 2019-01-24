@@ -10,7 +10,7 @@ html, body {
   align-items: center;
   height: 100vh;
   padding: 20%;
-}
+  animation: fadein 2s; }
 
 h1, h2, h3 {
   margin: 0; }
@@ -50,5 +50,16 @@ h1, h2, h3 {
 .tooltip-inner {
   white-space: nowrap;
   padding: 5px 10px; }
+
+@media(max-width: 414px) {
+  h2 {
+    font-size: 25px; }
+
+  #quote-box {
+    padding: 15%; }
+
+  #text {
+    line-height: 37px;
+    font-size: 25px; } }
 
 /*# sourceMappingURL=style.css.map */
