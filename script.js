@@ -16,6 +16,7 @@ function getQuotes() {
 		//quoteText = data["0"].content;
 		author.textContent = data["0"].title;
 		text.innerHTML = data["0"].content;
+	    overflow();
 	})
 }
 
@@ -99,6 +100,11 @@ function bookmarkPage() {
     return false;
 }
 
-function isOverflown(element){
-  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+function overflow() {
+	if (quoteBox.scrollHeight > quoteBox.clientHeight) {
+		quoteBox.style.display = "block";
+		quoteBox.style.height = "auto";
+	} else {
+		quoteBox.removeAttribute("style");
+	}
 }

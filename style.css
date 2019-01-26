@@ -51,6 +51,9 @@ h1, h2, h3 {
   white-space: nowrap;
   padding: 5px 10px; }
 
+@media(max-width: 736px) {
+  #quote-box {
+    padding: 10%; } }
 @media(max-width: 414px) {
   h2 {
     font-size: 25px; }
