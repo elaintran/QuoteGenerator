@@ -9,6 +9,22 @@ var authorText;
 var quoteText;
 
 function getQuotes() {
+  return $.ajax({
+    headers: {
+      Accept: "application/json"
+    },
+    url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
+    success: function(jsonQuotes) {
+      if (typeof jsonQuotes === 'string') {
+        quotesData = JSON.parse(jsonQuotes);
+        console.log('quotesData');
+        console.log(quotesData);
+      }
+    }
+  });
+}
+
+/*function getQuotes() {
 	var quoteAPI = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?";
 	$.getJSON(quoteAPI, function(data) {
 		console.log(data);
@@ -18,18 +34,40 @@ function getQuotes() {
 		text.innerHTML = data["0"].content;
 	    overflow();
 	})
+}*/
+
+//getQuotes();
+
+var currentQuote = '', currentAuthor = '';
+
+function getRandomQuote() {
+  return quotesData.quotes[Math.floor(Math.random() * quotesData.quotes.length)];
 }
 
-getQuotes();
+function getQuote() {
+  let randomQuote = getRandomQuote();
+  
+  currentQuote = randomQuote.quote;
+  currentAuthor = randomQuote.author;
+  $(".quote-container").animate({ opacity: 0 }, 500, function() {
+      $(this).animate({ opacity: 1}, 500);
+      text.textContent = currentQuote;
+      author.textContent = currentAuthor;
+//      $('.text').text(randomQuote.quote);
+      getColor();
+      //getQuotes();
+    }
+  );
+}
 
-function nextQuote() {
+/*function nextQuote() {
 	$(".quote-container").animate({ opacity: 0 }, 500, function() {
 	    $(this).animate({ opacity: 1}, 500);
 	    getColor();
 	    getQuotes();
     }
   );
-}
+}*/
 
 var colors = ["#5ec0bc", "#ffc95e", "#f36d6a", "#5ab7ed", "#b783c9", "#7ccd83"];
 
@@ -108,3 +146,9 @@ function overflow() {
 		quoteBox.removeAttribute("style");
 	}
 }
+
+  getQuotes().then(() => {
+    getQuote();
+  });
+
+  $('#new-quote').on('click', getQuote);
